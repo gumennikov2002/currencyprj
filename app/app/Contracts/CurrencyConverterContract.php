@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Contracts\BankRates;
+namespace App\Contracts;
 
 /**
  * The interface provides instructions
  * for using and using data from external services
  * reflectiong exchange rates
  */
-interface CurrencyConverter
+interface CurrencyConverterContract
 {
     /**
      * Method should get data stored in database

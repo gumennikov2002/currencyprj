@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\BankRates\CentralBank;
+use App\Contracts\CurrencyConverterContract;
 
 class ValuteRatesController extends Controller
 {
     /**
      * Showing the template and data
      */
-    public function index(CentralBank $cb)
+    public function index(CurrencyConverterContract $currencyConverter)
     {
         return view('index', [
-            'rates' => $cb->get(),
-            'last_update' => $cb->lastUpdate()
+            'rates'       => $currencyConverter->get(),
+            'last_update' => $currencyConverter->lastUpdate()
         ]);
     }
 }

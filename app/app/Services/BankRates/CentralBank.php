@@ -4,14 +4,14 @@ namespace App\Services\BankRates;
 
 use App\Helpers\Json;
 use Illuminate\Support\Facades\Log;
-use App\Contracts\BankRates\CurrencyConverter;
+use App\Contracts\CurrencyConverterContract;
 use App\Models\ValuteRate;
 
 /**
  * The class involves working with an external 
  * service to reflect exchange rates
  */
-class CentralBank implements CurrencyConverter
+class CentralBank implements CurrencyConverterContract
 {
     private string $remoteUri;
 
