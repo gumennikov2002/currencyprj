@@ -1,0 +1,38 @@
+version: '3.3'
+
+services:
+  
+  nginx:
+    container_name: nginx
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    volumes:
+      - ./app:/var/www/currencyprj
+    ports:
+      - 8010:80
+    links:
+      - php
+
+
+  php:
+    container_name: php
+    build:
+      context: .
+      dockerfile: php/Dockerfile
+    volumes:
+      - ./app:/var/www/currencyprj
+    links:
+      - mariadb
+
+
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    restart: always
+    ports:
+      - 33062:3306
+    environment:
+        MARIADB_ROOT_PASSWORD: root
+    volumes:
+      - ./mysql:/var/lib/mysql
